@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gameManager : MonoBehaviour
+public class itemtraked : MonoBehaviour
 {
     public void onTrackingFound() {
         Debug.Log("found");
