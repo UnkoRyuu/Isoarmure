@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BarreDeViePlayer : MonoBehaviour
 {
-    VieDuJoueur vieDuJoueur;
+    //VieDuJoueur vieDuJoueur;
     // Start is called before the first frame update
     void Start()
     {
