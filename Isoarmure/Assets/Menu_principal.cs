@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Menu_principal : MonoBehaviour
 {
-
+    
     public void PlayGame()
     {
-       
+        Application.LoadLevel("scene de jeu");
     }
 }
