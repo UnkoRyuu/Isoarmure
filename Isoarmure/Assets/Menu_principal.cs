@@ -8,6 +8,6 @@ public class Menu_principal : MonoBehaviour
     
     public void PlayGame()
     {
-        Application.LoadLevel("scene de jeu");
+        SceneManager.LoadScene("scene de jeu", LoadSceneMode.Additive);
     }
 }
