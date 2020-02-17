@@ -7,6 +7,7 @@ public class PlayerCC : MonoBehaviour
 
     public Animator anim;
     public float speed = 8f;
+    public float gravity = 20f;
     public bool isAttacking = false;
     private Vector3 moveDirection = Vector3.zero;
     CharacterController Cc;
@@ -30,18 +31,26 @@ public class PlayerCC : MonoBehaviour
         anim.SetFloat("vertical", Input.GetAxis("Vertical"));
         anim.SetFloat("horizontal", Input.GetAxis("Horizontal"));
 
+        if(Cc.isGrounded)
+        {
+            Debug.Log("Grounded");
+        }
+
         //Animation Attack
+        anim.SetBool("isAttacking", false);
         if (Input.GetMouseButtonDown(0))
         {
             anim.SetBool("isAttacking", true);
         }
-        anim.SetBool("isAttacking", false);
 
 
         //Mouvement
-        //Rotation du personnage
-        transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * speed * 50);
+        //Gravité
+        moveDirection.y -= gravity * Time.deltaTime;
 
+        //Rotation du personnage
+        transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * speed * 1000);
+        
         //Application du mouvement
         Cc.Move(moveDirection * Time.deltaTime);
     }
