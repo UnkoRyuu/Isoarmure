@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarreDeViePlayer : MonoBehaviour
+public class StatJoueur : MonoBehaviour
 {
-    //VieDuJoueur vieDuJoueur;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +14,11 @@ public class BarreDeViePlayer : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void EnvoyerDegat(int degat)
+    {
+        VieDuJoueur vie = GameObject.FindGameObjectWithTag("Player").GetComponent<VieDuJoueur>();
+        vie.recevoirDesDegats(degat);
     }
 }
