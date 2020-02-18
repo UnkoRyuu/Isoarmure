@@ -31,22 +31,25 @@ public class PlayerCC : MonoBehaviour
         anim.SetFloat("vertical", Input.GetAxis("Vertical"));
         anim.SetFloat("horizontal", Input.GetAxis("Horizontal"));
 
-        if(Cc.isGrounded)
-        {
-            Debug.Log("Grounded");
-        }
-
         //Animation Attack
-        anim.SetBool("isAttacking", false);
+        /*anim.SetBool("isAttacking", false);
         if (Input.GetMouseButtonDown(0))
         {
             anim.SetBool("isAttacking", true);
-        }
+        }*/
 
 
         //Mouvement
         //Gravité
-        moveDirection.y -= gravity * Time.deltaTime;
+        if (!Cc.isGrounded)
+        {
+            Debug.Log("isNotGrounded");
+            moveDirection.y -= gravity * Time.deltaTime;
+        }
+        //moveDirection.y -= gravity * Time.deltaTime;
+
+        Debug.Log("moveDirectionPosition Y : " + moveDirection.y);
+        
 
         //Rotation du personnage
         transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * speed * 1000);
