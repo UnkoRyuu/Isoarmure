@@ -2122,6 +2122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 688034168}
   speed: 0.2
+  jumpSpeed: 8
   gravity: 1
   isAttacking: 0
 --- !u!143 &688034170
