@@ -27,10 +27,12 @@ public class PlayerCC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         //Animation Déplacement
         if (Cc.isGrounded)
         {
-            moveDirection = new Vector3(0, moveDirection.y, joystick.Vertical * 0.125f);
+            moveDirection = new Vector3(joystick.Horizontal * 0.125f, moveDirection.y, joystick.Vertical * 0.125f);
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
             
@@ -38,20 +40,23 @@ public class PlayerCC : MonoBehaviour
         
 
         anim.SetFloat("vertical", joystick.Vertical * 0.125f);
-        anim.SetFloat("horizontal", joystick.Horizontal * 0.125f);
+        anim.SetFloat("vertical", joystick.Horizontal * 0.125f);
 
         //Debug.Log("moveDirectionPosition Y : " + moveDirection.y);
 
         //Mouvement
         //Gravité
-        moveDirection.y -= gravity * Time.deltaTime;
+        moveDirection.y -= gravity;
         
 
         //Rotation du personnage
-        transform.Rotate(Vector3.up * joystick.Horizontal * Time.deltaTime * speed * 200);
+        //transform.Rotate(Vector3.up * joystick.Horizontal * Time.deltaTime * speed * 200);
         
         //Application du mouvement
         Cc.Move(moveDirection * Time.deltaTime);
+
+        //Debug.Log(Cc.isGrounded);
+        Debug.Log(Cc.isGrounded);
     }
 
     //Animation Attack
@@ -62,7 +67,14 @@ public class PlayerCC : MonoBehaviour
 
     public void Jump()
     {
-        moveDirection.y = jumpSpeed;
-        Debug.Log("SAUT");
+        if (Cc.isGrounded)
+        {
+            moveDirection.y = jumpSpeed;
+            Debug.Log("SAUT");
+        }
+        else
+        {
+            Debug.Log("Saut Not Grounded");
+        }
     }
 }
