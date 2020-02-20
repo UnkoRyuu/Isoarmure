@@ -10,7 +10,7 @@ public class PlayerCC : MonoBehaviour
     protected bl_Joystick joystick;
 
     public float speed = 8f;
-    public float jumpSpeed = 0.001f;
+    public float jumpSpeed;
     public float gravity = 20f;
     public bool isAttacking = false;
     private Vector3 moveDirection = Vector3.zero;
@@ -30,31 +30,17 @@ public class PlayerCC : MonoBehaviour
         //Animation Déplacement
         if (Cc.isGrounded)
         {
-            moveDirection = new Vector3(0, 0, joystick.Vertical * 0.125f);
+            moveDirection = new Vector3(0, moveDirection.y, joystick.Vertical * 0.125f);
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
-
-
-            if (Input.GetButtonDown("Jump"))
-            {
-                moveDirection.y = jumpSpeed * 0.05f;
-                Debug.Log("SAUT");
-            }
+            
         }
         
 
         anim.SetFloat("vertical", joystick.Vertical * 0.125f);
         anim.SetFloat("horizontal", joystick.Horizontal * 0.125f);
 
-        Debug.Log("moveDirectionPosition Y : " + moveDirection.y);
-
-        //Animation Attack
-        /*anim.SetBool("isAttacking", false);
-        if (Input.GetMouseButtonDown(0))
-        {
-            anim.SetBool("isAttacking", true);
-        }*/
-
+        //Debug.Log("moveDirectionPosition Y : " + moveDirection.y);
 
         //Mouvement
         //Gravité
@@ -66,5 +52,17 @@ public class PlayerCC : MonoBehaviour
         
         //Application du mouvement
         Cc.Move(moveDirection * Time.deltaTime);
+    }
+
+    //Animation Attack
+    public void Attack()
+    {
+        anim.Play("Attack");
+    }
+
+    public void Jump()
+    {
+        moveDirection.y = jumpSpeed;
+        Debug.Log("SAUT");
     }
 }
