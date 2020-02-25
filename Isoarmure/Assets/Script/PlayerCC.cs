@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerCC : MonoBehaviour
 {
-
+    public CharacterController controller;
     public Animator anim;
 
     protected bl_Joystick joystick;
 
-    public float speed = 8f;
+    public float speed = 1f;
     public float jumpSpeed;
     public float gravity = 20f;
     public bool isAttacking = false;
@@ -27,17 +27,24 @@ public class PlayerCC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+        Vector3 move = transform.right * x + transform.forward * z;
+
+        controller.Move(move * speed * Time.deltaTime);
 
         //Animation Déplacement
         if (Cc.isGrounded)
-        {
-            moveDirection = new Vector3(joystick.Horizontal * 0.125f, moveDirection.y, joystick.Vertical * 0.125f);
+        {/*
+            moveDirection = new Vector3(joystick.Horizontal * 0.125f +Input.GetAxis("Horizontal") * 0.5f, moveDirection.y, joystick.Vertical * 0.125f + Input.GetAxis("Vertical") * 0.5f);
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
-            
+            */
         }
-        
+        if (Input.GetButton("Fire1"))
+        {
+            anim.Play("Attack");
+        }
 
         anim.SetFloat("vertical", joystick.Vertical * 0.125f);
         anim.SetFloat("vertical", joystick.Horizontal * 0.125f);
@@ -62,7 +69,7 @@ public class PlayerCC : MonoBehaviour
     //Animation Attack
     public void Attack()
     {
-        anim.Play("Attack");
+        anim.Play("Attack");      
     }
 
     public void Jump()
