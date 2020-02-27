@@ -7,10 +7,11 @@ using UnityEngine.UI;
 public class fieldOfview : MonoBehaviour
 {
     public Image danger;
+    public float silent = 0f;
     public float viewRadius;
-    float positionX_Player, positionZ_Player, positionX_dragon, positionZ_dragon;
+    float positionX_Player = 0, positionZ_Player = 0, positionX_dragon = 0, positionZ_dragon = 0;
     //public float viewAngle;
-    public GameObject player = GameObject.FindGameObjectWithTag("Player");
+    public GameObject player = GameObject.FindGameObjectWithTag("player");
     public GameObject dragon = GameObject.FindGameObjectWithTag("dragon");
 
     public Vector3 DirFromAngle(float anglesinDegrees)
@@ -29,9 +30,11 @@ public class fieldOfview : MonoBehaviour
         positionZ_Player = player.transform.position.z;
         positionX_dragon = dragon.transform.position.x;
         positionZ_dragon = dragon.transform.position.z;
+
         //Debug.Log(positionX_dragon + " , " + positionZ_dragon);
         //Debug.Log(positionX_Player + " , " + positionZ_Player);
         //Debug.Log(Mathf.Pow(5, 2));
+
         //calcule de distance entre les points
         float distance = Mathf.Sqrt(Mathf.Pow(positionX_dragon - positionX_Player, 2) + Mathf.Pow(positionZ_dragon - positionZ_Player, 2));
         //Debug.Log(distance);
