@@ -15,6 +15,12 @@ public class PlayerCC : MonoBehaviour
     public bool isAttacking = false;
     private Vector3 moveDirection = Vector3.zero;
 
+
+    Transform from;
+    Transform to;
+    float rotationSpeed = 0.1f;
+
+
     CharacterController Cc;
 
     // Start is called before the first frame update
@@ -41,24 +47,27 @@ public class PlayerCC : MonoBehaviour
             moveDirection *= speed;
             
         }
-        if (Input.GetButton("Fire1"))
+        //Attack
+        /*if (Input.GetButton("Fire1"))
         {
             anim.Play("Attack");
-        }
+        }*/
 
         anim.SetFloat("vertical", joystick.Vertical * 0.125f);
-        anim.SetFloat("vertical", joystick.Horizontal * 0.125f);
+        anim.SetFloat("horizontal", joystick.Horizontal * 0.125f);
 
         //Debug.Log("moveDirectionPosition Y : " + moveDirection.y);
 
         //Mouvement
         //Gravité
         moveDirection.y -= gravity;
-        
+
 
         //Rotation du personnage
         //transform.Rotate(Vector3.up * joystick.Horizontal * Time.deltaTime * speed * 200);
-        
+        //transform.rotation = Quaternion.Lerp(moveDirection.x, moveDirection.z, Time.time * rotationSpeed);
+
+
         //Application du mouvement
         Cc.Move(moveDirection * Time.deltaTime);
 
@@ -84,4 +93,19 @@ public class PlayerCC : MonoBehaviour
             Debug.Log("Saut Not Grounded");
         }
     }
+
+
+
+
+    /*
+     
+      Transform from;
+    Transform to;
+    float speed = 0.1f;
+    void Update()
+    {
+        transform.rotation = Quaternion.Lerp(from.rotation, to.rotation, Time.time * speed);
+    }
+     
+     */
 }

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class fieldOfview : MonoBehaviour
 {
+    public Animator anim;
+
     public Image danger;
     public float viewRadius;
     float positionX_Player, positionZ_Player, positionX_dragon, positionZ_dragon;
@@ -21,7 +23,7 @@ public class fieldOfview : MonoBehaviour
     public void Update()
     {
         detection();
-        
+
     }
     public void detection()
     {
@@ -38,10 +40,16 @@ public class fieldOfview : MonoBehaviour
         if (distance <= viewRadius)
         {
             danger.gameObject.SetActive(true);
+            anim.SetBool("inZone", true);
+            anim.SetFloat("randomAttack", Random.Range(0.00001f, 2));
+            //anim.SetFloat("randomAttack", -1f);
         }
         else
         {
             danger.gameObject.SetActive(false);
+            anim.SetBool("inZone", false);
+            anim.SetFloat("randomAttack", Random.Range(0.00001f, 2));
+            //anim.SetFloat("randomAttack", -1f);
         }
     }
         
