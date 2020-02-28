@@ -13,6 +13,7 @@ public class PlayerCC : MonoBehaviour
     public float jumpSpeed;
     public float gravity = 20f;
     public bool isAttacking = false;
+    public Transform cam;
     private Vector3 moveDirection = Vector3.zero;
 
     CharacterController Cc;
@@ -33,12 +34,26 @@ public class PlayerCC : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime);
         */
+        float inputX = joystick.Horizontal * 0.125f + Input.GetAxis("Horizontal") * 0.5f;
+        float inputY = joystick.Vertical * 0.125f + Input.GetAxis("Vertical") * 0.5f;
+        Vector3 inputVector = new Vector3(inputX, inputY, 0);
+
         //Animation Déplacement
         if (Cc.isGrounded)
         {
-            moveDirection = new Vector3(joystick.Horizontal * 0.125f +Input.GetAxis("Horizontal") * 0.5f, moveDirection.y, joystick.Vertical * 0.125f + Input.GetAxis("Vertical") * 0.5f);
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= speed;
+            Vector3 forwardTarget = new Vector3(cam.forward.x, 0, cam.forward.z);
+            Vector3 forwardDirection = forwardTarget;
+            forwardDirection = forwardDirection.normalized;
+            //Debug.DrawLine(cam.position, cam.position + forwardDirection, Color.magenta);
+
+            Vector3 rightTarget = new Vector3(cam.right.x, 0, cam.right.z);
+            Vector3 rightDirection = rightTarget;
+            rightDirection = rightDirection.normalized;
+            //Debug.DrawLine(cam.position, cam.position + rightDirection, Color.red);
+
+            Vector3 move = forwardDirection * inputY + rightDirection * inputX;
+
+            moveDirection = new Vector3(move.x * speed, moveDirection.y, move.z * speed);
             
         }
         if (Input.GetButton("Fire1"))
@@ -61,6 +76,14 @@ public class PlayerCC : MonoBehaviour
         
         //Application du mouvement
         Cc.Move(moveDirection * Time.deltaTime);
+
+        
+        if(inputVector.magnitude > 0.1f)
+        {
+            Vector3 rotTarget = new Vector3(moveDirection.x, 0, moveDirection.z);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z)), 0.1f);
+        }
+            
 
         //Debug.Log(Cc.isGrounded);
         Debug.Log(Cc.isGrounded);

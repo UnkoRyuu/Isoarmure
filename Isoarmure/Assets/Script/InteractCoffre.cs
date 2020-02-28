@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class InteractCoffre : MonoBehaviour
 {
-    public 
+    private void Start()
+    {
+        
+    }
 }

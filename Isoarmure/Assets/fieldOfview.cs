@@ -11,14 +11,18 @@ public class fieldOfview : MonoBehaviour
     public float viewRadius;
     float positionX_Player = 0, positionZ_Player = 0, positionX_dragon = 0, positionZ_dragon = 0;
     //public float viewAngle;
-    public GameObject player = GameObject.FindGameObjectWithTag("player");
-    public GameObject dragon = GameObject.FindGameObjectWithTag("dragon");
+    public GameObject player; 
+    public GameObject dragon ;
 
     public Vector3 DirFromAngle(float anglesinDegrees)
     {
         return new Vector3(Mathf.Sin(anglesinDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(anglesinDegrees * Mathf.Deg2Rad));
     }
-
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        dragon = GameObject.FindGameObjectWithTag("Dragon");
+    }
     public void Update()
     {
         detection();
