@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class InteractCoffre : InteractableItemBase
 {
-
     private bool chestIsOpen = false;
 
     public override void OnInteract()
@@ -13,7 +12,7 @@ public class InteractCoffre : InteractableItemBase
 
         chestIsOpen = !chestIsOpen;
         InteractText += chestIsOpen ? "close" : "open";
-        
+
         GetComponent<Animator>().SetBool("open", chestIsOpen);
     }
 
