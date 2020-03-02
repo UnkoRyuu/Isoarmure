@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCC : MonoBehaviour
 {
@@ -62,12 +63,20 @@ public class PlayerCC : MonoBehaviour
             moveDirection = new Vector3(move.x * speed, moveDirection.y, move.z * speed);
             
         }
+<<<<<<< HEAD
         //Attack
         /*if (Input.GetButton("Fire1"))
         {
             anim.Play("Attack");
         }*/
+=======
+        
+>>>>>>> 420824e397e366c50629cec5fa499a455850f57b
 
+        /*if(moveDirection != new Vector3(0, 0, 0)
+        {
+            anime.
+        }*/
         anim.SetFloat("vertical", joystick.Vertical * 0.125f);
         anim.SetFloat("horizontal", joystick.Horizontal * 0.125f);
 
