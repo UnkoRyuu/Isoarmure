@@ -934,6 +934,11 @@ PrefabInstance:
       propertyPath: danger
       value: 
       objectReference: {fileID: 207531577}
+    - target: {fileID: 5345086295286615164, guid: 85e2da38b34060c4989d2acdff9e9c10,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 962795134}
     - target: {fileID: 5345086295286615166, guid: 85e2da38b34060c4989d2acdff9e9c10,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1009,6 +1014,11 @@ PrefabInstance:
       propertyPath: lookRadius
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5818057196910852424, guid: 85e2da38b34060c4989d2acdff9e9c10,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3ec691a843525aa4f9702ab7e06a7901, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85e2da38b34060c4989d2acdff9e9c10, type: 3}
 --- !u!4 &290831961 stripped
@@ -2293,7 +2303,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 688034170}
   anim: {fileID: 688034168}
-  speed: 0.8
+  animEnnemie: {fileID: 962795134}
+  speed: 2
   jumpSpeed: 5
   gravity: 0.3
   isAttacking: 0
@@ -2929,6 +2940,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea9c3efd96e12a478805ae26010fe9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &962795134 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5818057196910852424, guid: 85e2da38b34060c4989d2acdff9e9c10,
+    type: 3}
+  m_PrefabInstance: {fileID: 278496956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1004278388
 GameObject:
   m_ObjectHideFlags: 0

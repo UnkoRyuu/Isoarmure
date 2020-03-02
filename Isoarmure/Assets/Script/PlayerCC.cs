@@ -7,10 +7,11 @@ public class PlayerCC : MonoBehaviour
 {
     public CharacterController controller;
     public Animator anim;
+    public Animator animEnnemie;
 
     protected bl_Joystick joystick;
 
-    public float speed = 1f;
+    public float speed;
     public float jumpSpeed;
     public float gravity = 20f;
     public bool isAttacking = false;
@@ -75,6 +76,8 @@ public class PlayerCC : MonoBehaviour
         }*/
         anim.SetFloat("vertical", joystick.Vertical * 0.125f);
         anim.SetFloat("horizontal", joystick.Horizontal * 0.125f);
+        animEnnemie.SetFloat("vertical", joystick.Vertical * 0.125f);
+        animEnnemie.SetFloat("horizontal", joystick.Horizontal * 0.125f);
 
         //Debug.Log("moveDirectionPosition Y : " + moveDirection.y);
 
