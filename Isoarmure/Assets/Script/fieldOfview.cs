@@ -48,7 +48,7 @@ public class fieldOfview : MonoBehaviour
         {
             danger.gameObject.SetActive(true);
             anim.SetBool("inZone", true);
-            anim.SetFloat("randomAttack", Random.Range(0.00001f, 2));
+            anim.SetFloat("randomAttack", Random.Range(0.00001f, 3));
             //anim.SetFloat("randomAttack", -1f);
         }
         else
