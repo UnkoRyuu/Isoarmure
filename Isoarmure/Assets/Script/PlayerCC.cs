@@ -61,17 +61,13 @@ public class PlayerCC : MonoBehaviour
             Vector3 move = forwardDirection * inputY + rightDirection * inputX;
 
             moveDirection = new Vector3(move.x * speed, moveDirection.y, move.z * speed);
-            
+
         }
-<<<<<<< HEAD
         //Attack
         /*if (Input.GetButton("Fire1"))
         {
             anim.Play("Attack");
         }*/
-=======
-        
->>>>>>> 420824e397e366c50629cec5fa499a455850f57b
 
         /*if(moveDirection != new Vector3(0, 0, 0)
         {
@@ -95,13 +91,13 @@ public class PlayerCC : MonoBehaviour
         //Application du mouvement
         Cc.Move(moveDirection * Time.deltaTime);
 
-        
+
         if(inputVector.magnitude > 0.1f)
         {
             Vector3 rotTarget = new Vector3(moveDirection.x, 0, moveDirection.z);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z)), 0.1f);
         }
-            
+
 
         //Debug.Log(Cc.isGrounded);
         Debug.Log(Cc.isGrounded);
@@ -110,7 +106,7 @@ public class PlayerCC : MonoBehaviour
     //Animation Attack
     public void Attack()
     {
-        anim.Play("Attack");      
+        anim.Play("Attack");
     }
 
     public void Jump()
@@ -130,7 +126,7 @@ public class PlayerCC : MonoBehaviour
 
 
     /*
-     
+
       Transform from;
     Transform to;
     float speed = 0.1f;
@@ -138,6 +134,6 @@ public class PlayerCC : MonoBehaviour
     {
         transform.rotation = Quaternion.Lerp(from.rotation, to.rotation, Time.time * speed);
     }
-     
+
      */
 }
