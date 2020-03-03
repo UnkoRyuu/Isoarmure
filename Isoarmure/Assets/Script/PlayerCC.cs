@@ -7,7 +7,7 @@ public class PlayerCC : MonoBehaviour
 {
     public CharacterController controller;
     public Animator anim;
-    public Animator animEnnemie;
+    public Animator animEnnemi;
 
     protected bl_Joystick joystick;
 
@@ -76,8 +76,8 @@ public class PlayerCC : MonoBehaviour
         }*/
         anim.SetFloat("vertical", joystick.Vertical * 0.125f);
         anim.SetFloat("horizontal", joystick.Horizontal * 0.125f);
-        animEnnemie.SetFloat("vertical", joystick.Vertical * 0.125f);
-        animEnnemie.SetFloat("horizontal", joystick.Horizontal * 0.125f);
+        animEnnemi.SetFloat("vertical", joystick.Vertical * 0.125f);
+        animEnnemi.SetFloat("horizontal", joystick.Horizontal * 0.125f);
 
         //Debug.Log("moveDirectionPosition Y : " + moveDirection.y);
 
