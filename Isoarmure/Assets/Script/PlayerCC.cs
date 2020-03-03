@@ -9,7 +9,7 @@ public class PlayerCC : MonoBehaviour
     public Animator anim;
     public Animator animEnnemi;
 
-    VieDuJoueur vieDuJoueur;
+   // VieDuJoueur vieDuJoueur;
 
     protected bl_Joystick joystick;
 
@@ -31,7 +31,7 @@ public class PlayerCC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        vieDuJoueur = GetComponent<VieDuJoueur>();
+       // vieDuJoueur = GetComponent<VieDuJoueur>();
         Cc = GetComponent<CharacterController>();
         joystick = FindObjectOfType<bl_Joystick>();
     }
@@ -127,10 +127,10 @@ public class PlayerCC : MonoBehaviour
             Debug.Log("Saut Not Grounded");
         }
     }
-    public void coupSubi()
+   /* public void coupSubi()
     {
         vieDuJoueur.recevoirDesDegats(1);
-    }
+    }*/
 
 
 
