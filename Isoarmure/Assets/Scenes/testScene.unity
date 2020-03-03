@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
@@ -275,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825605775}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.36, y: 1.6, z: 6.39}
+  m_LocalPosition: {x: 21.8, y: 1.6, z: 2.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -291,8 +291,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f699ecbf2565bfc41ac4125ea342632f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
+  anim: {fileID: 8471873138659711461}
 --- !u!54 &825605781
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -357,8 +358,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -399,7 +400,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -699,8 +700,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
@@ -716,8 +717,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
@@ -779,7 +780,7 @@ PrefabInstance:
     - target: {fileID: 4593579335127568531, guid: 85e2da38b34060c4989d2acdff9e9c10,
         type: 3}
       propertyPath: cam
-      value: 
+      value:
       objectReference: {fileID: 1423903484}
     - target: {fileID: 4593579335304017829, guid: 85e2da38b34060c4989d2acdff9e9c10,
         type: 3}
@@ -799,12 +800,12 @@ PrefabInstance:
     - target: {fileID: 5345086295286615164, guid: 85e2da38b34060c4989d2acdff9e9c10,
         type: 3}
       propertyPath: danger
-      value: 
+      value:
       objectReference: {fileID: 1039732865}
     - target: {fileID: 5345086295286615164, guid: 85e2da38b34060c4989d2acdff9e9c10,
         type: 3}
       propertyPath: player
-      value: 
+      value:
       objectReference: {fileID: 825605775}
     - target: {fileID: 5345086295286615166, guid: 85e2da38b34060c4989d2acdff9e9c10,
         type: 3}
@@ -861,5 +862,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 85e2da38b34060c4989d2acdff9e9c10, type: 3}
+    m_RemovedComponents:
+    - {fileID: 456119580, guid: 25ee21ce753c664419891c99a11444da, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 25ee21ce753c664419891c99a11444da, type: 3}
+--- !u!1 &8471873138659711459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2605546614725777517, guid: 25ee21ce753c664419891c99a11444da,
+    type: 3}
+  m_PrefabInstance: {fileID: 8471873138659711458}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8471873138659711460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8471873138659711459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d89a7810fc6b86d4bb8d0d30a4b038fa, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  anim: {fileID: 8471873138659711461}
+  danger: {fileID: 1039732865}
+  viewRadius: 10.02
+  player: {fileID: 825605775}
+  dragon: {fileID: 8471873138659711459}
+--- !u!95 &8471873138659711461 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1346417912185328865, guid: 25ee21ce753c664419891c99a11444da,
+    type: 3}
+  m_PrefabInstance: {fileID: 8471873138659711458}
+  m_PrefabAsset: {fileID: 0}

@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class detection : MonoBehaviour
 {
+    Animation anim;
     protected GameObject player;
+    public StatJoueur vieDuJoueur;
     private void Start()
     {
         
     }
-    // Start is called before the first frame update
-    public void OnTriggerEnter(Collider other)
+    public void OnControllerColliderHit(ControllerColliderHit collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("HitPlayer"))
+        {
+            Debug.Log("Hit");
+        }
     }
 }

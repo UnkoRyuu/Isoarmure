@@ -1,20 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCC : MonoBehaviour
 {
     public CharacterController controller;
     public Animator anim;
+    public Animator animEnnemie;
 
     protected bl_Joystick joystick;
 
-    public float speed = 1f;
+    public float speed;
     public float jumpSpeed;
     public float gravity = 20f;
     public bool isAttacking = false;
     public Transform cam;
     private Vector3 moveDirection = Vector3.zero;
+
+
+    Transform from;
+    Transform to;
+    float rotationSpeed = 0.1f;
+
 
     CharacterController Cc;
 
@@ -54,36 +62,45 @@ public class PlayerCC : MonoBehaviour
             Vector3 move = forwardDirection * inputY + rightDirection * inputX;
 
             moveDirection = new Vector3(move.x * speed, moveDirection.y, move.z * speed);
-            
+
         }
-        if (Input.GetButton("Fire1"))
+        //Attack
+        /*if (Input.GetButton("Fire1"))
         {
             anim.Play("Attack");
-        }
+        }*/
 
+        /*if(moveDirection != new Vector3(0, 0, 0)
+        {
+            anime.
+        }*/
         anim.SetFloat("vertical", joystick.Vertical * 0.125f);
-        anim.SetFloat("vertical", joystick.Horizontal * 0.125f);
+        anim.SetFloat("horizontal", joystick.Horizontal * 0.125f);
+        animEnnemie.SetFloat("vertical", joystick.Vertical * 0.125f);
+        animEnnemie.SetFloat("horizontal", joystick.Horizontal * 0.125f);
 
         //Debug.Log("moveDirectionPosition Y : " + moveDirection.y);
 
         //Mouvement
         //Gravité
         moveDirection.y -= gravity;
-        
+
 
         //Rotation du personnage
         //transform.Rotate(Vector3.up * joystick.Horizontal * Time.deltaTime * speed * 200);
-        
+        //transform.rotation = Quaternion.Lerp(moveDirection.x, moveDirection.z, Time.time * rotationSpeed);
+
+
         //Application du mouvement
         Cc.Move(moveDirection * Time.deltaTime);
 
-        
+
         if(inputVector.magnitude > 0.1f)
         {
             Vector3 rotTarget = new Vector3(moveDirection.x, 0, moveDirection.z);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z)), 0.1f);
         }
-            
+
 
         //Debug.Log(Cc.isGrounded);
         Debug.Log(Cc.isGrounded);
@@ -92,7 +109,7 @@ public class PlayerCC : MonoBehaviour
     //Animation Attack
     public void Attack()
     {
-        anim.Play("Attack");      
+        anim.Play("Attack");
     }
 
     public void Jump()
@@ -107,4 +124,19 @@ public class PlayerCC : MonoBehaviour
             Debug.Log("Saut Not Grounded");
         }
     }
+
+
+
+
+    /*
+
+      Transform from;
+    Transform to;
+    float speed = 0.1f;
+    void Update()
+    {
+        transform.rotation = Quaternion.Lerp(from.rotation, to.rotation, Time.time * speed);
+    }
+
+     */
 }
