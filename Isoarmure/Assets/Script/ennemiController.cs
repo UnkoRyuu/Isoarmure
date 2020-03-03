@@ -9,18 +9,15 @@ public class ennemiController : MonoBehaviour
     public BarreDeVieDragon vie_Dragon;
     public int vieMax = 100;
     public int vieCourrante;
-    private bool estLance;
-    Animation animCoupDeQueue;
+    bool animationLance = false;
     
     // Start is called before the first frame update
     void Start()
     {
         vieCourrante = vieMax;
         vie_Dragon.setVieMax(vieMax);
-        animCoupDeQueue = GetComponent<Animation>();
-        estLance = false;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +27,15 @@ public class ennemiController : MonoBehaviour
         }
         
     }
+    public bool getAnimationLance()
+    {
+        return animationLance;
+    }
+    public void setAnimationLance(bool valueAnim)
+    {
+        animationLance = valueAnim;
+    }
+
     public void RecevoirDegat(int degat)
     {
         vieCourrante -= degat;
@@ -41,22 +47,21 @@ public class ennemiController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
-
-    public void setEstLance(bool NewEstLance)
+    
+    public void isTailAttacking(int value)
     {
-        estLance = NewEstLance;
-    }
-    public bool lancementAnimation() {
-        if (animCoupDeQueue.IsPlaying("Tail Attack")){
-            
-            Debug.Log("testPositif");
+        if (value == 1)
+        {
+            setAnimationLance(true);
+            //Debug.Log("testPositif");
+           
         }
         else
         {
-            Debug.Log("testnegatif");
-            setEstLance(false);
+            setAnimationLance(false);
+            //Debug.Log("testnegatif");
+            
         }
-
-        return estLance;
+        
     }
 }

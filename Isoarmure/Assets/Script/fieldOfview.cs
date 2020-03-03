@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class fieldOfview : MonoBehaviour
 {
-    public Animator anim;
+    private Animator anim;
 
     public Image danger;
     public float silent = 0f;
@@ -20,6 +20,12 @@ public class fieldOfview : MonoBehaviour
     {
         return new Vector3(Mathf.Sin(anglesinDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(anglesinDegrees * Mathf.Deg2Rad));
     }
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
