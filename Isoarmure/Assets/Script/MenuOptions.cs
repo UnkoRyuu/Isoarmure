@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class MenuOptions : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public GameObject panel_Option;
+    
+    /**public void ouvrirPanel()
     {
-        
-    }
+        if (panel_Option != null)
+        {
+            bool isActive = panel_Option.activeSelf;
+            panel_Option.setActive(!isActive);
+        }
+    }**/
 }
