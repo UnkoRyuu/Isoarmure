@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class detection : MonoBehaviour
 {
-    Animation anim;
-    protected GameObject player;
+    ennemiController ennemi;
+    float tempsAttaque = 2f;
+    float cooldown ;
     public StatJoueur vieDuJoueur;
     private void Start()
     {
-        
+        ennemi = GetComponent<ennemiController>();
     }
     public void OnControllerColliderHit(ControllerColliderHit collision)
     {
-        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("HitPlayer"))
+        //if (ennemi.lancementAnimation())
+        //{
+            if (collision.collider.gameObject.layer == LayerMask.NameToLayer("HitPlayer") && Time.time > cooldown)
+            {
+                cooldown = Time.time + tempsAttaque;
+                Debug.Log("Hit");
+            }
+       /* }
+        else
         {
-            Debug.Log("Hit");
-        }
+            Debug.Log("PAS DE COLLISION PENDANT ANIM");
+        }*/
     }
 }
