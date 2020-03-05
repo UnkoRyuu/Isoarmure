@@ -17,6 +17,7 @@ public class PlayerCC : MonoBehaviour
     public float jumpSpeed;
     public float gravity = 20f;
     public bool isAttacking = false;
+    public bool animationSwordLance = false;
     public Transform cam;
     private Vector3 moveDirection = Vector3.zero;
 
@@ -127,12 +128,38 @@ public class PlayerCC : MonoBehaviour
             Debug.Log("Saut Not Grounded");
         }
     }
-   /* public void coupSubi()
+    /* public void coupSubi()
+     {
+         vieDuJoueur.recevoirDesDegats(1);
+     }*/
+
+    //détection de l'animation de l'épée du joueur
+    public bool getAnimationSwordLance()
     {
-        vieDuJoueur.recevoirDesDegats(1);
-    }*/
+        return animationSwordLance;
+    }
+    public void setAnimationSwordLance(bool valueAnim)
+    {
+        animationSwordLance = valueAnim;
+    }
 
 
+    public void isSwordAttacking(int value)
+    {
+        if (value == 1)
+        {
+            setAnimationSwordLance(true);
+            Debug.Log("testPositif");
+
+        }
+        else
+        {
+            setAnimationSwordLance(false);
+            Debug.Log("testnegatif");
+
+        }
+
+    }
 
     /*
 

@@ -7,9 +7,16 @@ public class detectionCollisionJoueur : MonoBehaviour
     public ennemiController ennemi;   
     float tempsAttaque = 2f;
     float cooldown ;
-    public StatJoueur vieDuJoueur;
+    
+    StatJoueur vieDuJoueur;
+    private void Awake()
+    {
+        vieDuJoueur = GetComponent<StatJoueur>();
+    }
+
     private void Start()
     {
+        
     }
     public void OnControllerColliderHit(ControllerColliderHit collision)
     {
@@ -18,12 +25,14 @@ public class detectionCollisionJoueur : MonoBehaviour
             if (collision.collider.gameObject.layer == LayerMask.NameToLayer("HitPlayer") && Time.time > cooldown)
             {
                 cooldown = Time.time + tempsAttaque;
-                Debug.Log("Hit");
+                vieDuJoueur.EnvoyerDegat(1);
+                Debug.Log("Hit Tail");
                
             }
         }
         else
         {
+            
             //Debug.Log("PAS DE COLLISION PENDANT ANIM");
         }
     }

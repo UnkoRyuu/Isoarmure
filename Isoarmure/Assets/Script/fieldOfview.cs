@@ -13,8 +13,8 @@ public class fieldOfview : MonoBehaviour
     public float viewRadius;
     float positionX_Player = 0, positionZ_Player = 0, positionX_dragon = 0, positionZ_dragon = 0;
     //public float viewAngle;
-    public GameObject player; 
-    public GameObject dragon ;
+    GameObject player; 
+    GameObject dragon ;
 
     public Vector3 DirFromAngle(float anglesinDegrees)
     {

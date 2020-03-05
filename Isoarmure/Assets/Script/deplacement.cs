@@ -18,8 +18,8 @@ public class deplacement : MonoBehaviour
     {
         var rigibody = GetComponent<Rigidbody>();
         rigibody.velocity = new Vector3(Input.GetAxis("Horizontal") * 10f , rigibody.velocity.y, Input.GetAxis("Vertical") * 10f);
-
+        /*
         anim.SetFloat("vertical", Input.GetAxis("Vertical") * 10f);
         anim.SetFloat("horizontal", Input.GetAxis("Horizontal") * 10f);
-    }
+    */}
 }
