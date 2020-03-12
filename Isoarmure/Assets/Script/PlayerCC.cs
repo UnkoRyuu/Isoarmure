@@ -40,12 +40,7 @@ public class PlayerCC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-        Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * speed * Time.deltaTime);
-        */
         float inputX = joystick.Horizontal * 0.125f + Input.GetAxis("Horizontal") * 0.5f;
         float inputY = joystick.Vertical * 0.125f + Input.GetAxis("Vertical") * 0.5f;
         Vector3 inputVector = new Vector3(inputX, inputY, 0);
@@ -69,19 +64,25 @@ public class PlayerCC : MonoBehaviour
 
         }
         //Attack
-        /*if (Input.GetButton("Fire1"))
+        
+        if (moveDirection.x > moveDirection.z)
         {
-            anim.Play("Attack");
-        }*/
+            anim.SetFloat("speed", moveDirection.x);
+        }
+        else
+        {
+            anim.SetFloat("speed", moveDirection.z);
+        }
 
-        /*if(moveDirection != new Vector3(0, 0, 0)
+        if (moveDirection.x > moveDirection.z)
         {
-            anime.
-        }*/
-        anim.SetFloat("vertical", joystick.Vertical * 0.125f);
-        anim.SetFloat("horizontal", joystick.Horizontal * 0.125f);
-        animEnnemi.SetFloat("vertical", joystick.Vertical * 0.125f);
-        animEnnemi.SetFloat("horizontal", joystick.Horizontal * 0.125f);
+            animEnnemi.SetFloat("speed", moveDirection.x);
+        }
+        else
+        {
+            animEnnemi.SetFloat("speed", moveDirection.z);
+        }
+        Debug.Log("MoveDirection : " + moveDirection);
 
         //Debug.Log("moveDirectionPosition Y : " + moveDirection.y);
 
@@ -89,10 +90,6 @@ public class PlayerCC : MonoBehaviour
         //Gravité
         moveDirection.y -= gravity;
 
-
-        //Rotation du personnage
-        //transform.Rotate(Vector3.up * joystick.Horizontal * Time.deltaTime * speed * 200);
-        //transform.rotation = Quaternion.Lerp(moveDirection.x, moveDirection.z, Time.time * rotationSpeed);
 
 
         //Application du mouvement
@@ -128,12 +125,7 @@ public class PlayerCC : MonoBehaviour
             Debug.Log("Saut Not Grounded");
         }
     }
-    /* public void coupSubi()
-     {
-         vieDuJoueur.recevoirDesDegats(1);
-     }*/
 
-    //détection de l'animation de l'épée du joueur
     public bool getAnimationSwordLance()
     {
         return animationSwordLance;
@@ -161,15 +153,4 @@ public class PlayerCC : MonoBehaviour
 
     }
 
-    /*
-
-      Transform from;
-    Transform to;
-    float speed = 0.1f;
-    void Update()
-    {
-        transform.rotation = Quaternion.Lerp(from.rotation, to.rotation, Time.time * speed);
-    }
-
-     */
 }

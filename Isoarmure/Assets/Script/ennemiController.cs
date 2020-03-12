@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 public class ennemiController : MonoBehaviour
@@ -10,21 +11,23 @@ public class ennemiController : MonoBehaviour
     public int vieMax = 100;
     public int vieCourrante;
     bool animationLance = false;
+
+    Transform target;
+    NavMeshAgent agent;
     
     // Start is called before the first frame update
     void Start()
     {
         vieCourrante = vieMax;
         vie_Dragon.setVieMax(vieMax);
+        target = PlayerManager.instance.player.transform;
+        agent = GetComponent<NavMeshAgent>();
     }
     
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            RecevoirDegat(20);
-        }*/
+        float distance = Vector3(transform.position, target.position);
         
     }
     public bool getAnimationLance()
