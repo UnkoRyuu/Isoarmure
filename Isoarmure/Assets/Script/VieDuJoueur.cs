@@ -6,6 +6,7 @@ public class VieDuJoueur : MonoBehaviour
 {
     public int vie;
     public Animator anim;
+    public GameObject gameOver;
     //VieDuJoueur vieDuJoueur;
     // Start is called before the first frame update
     void Start()
@@ -16,11 +17,7 @@ public class VieDuJoueur : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (vie <= 0)
-        {
-
-            anim.SetBool("die", true);
-        }
+        mort();
     }
 
     public void recevoirDesDegats(int degat)
@@ -29,12 +26,13 @@ public class VieDuJoueur : MonoBehaviour
         Debug.Log("vie : " + vie);
     }
 
-    /*public void mort()
+   public void mort()
     {
         if(vie <= 0)
-        {
-            
+        {            
             anim.SetBool("die",true);
+            gameOver.SetActive(true);
+            
         }
-    }*/
+    }
 }

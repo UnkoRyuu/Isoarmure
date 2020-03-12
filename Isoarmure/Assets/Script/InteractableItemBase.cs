@@ -13,9 +13,9 @@ public class InteractableItemBase : MonoBehaviour
 
     private GameObject canvas;
 
-    private GameObject boutonOuv;
+    public GameObject boutonOuv;
 
-    private GameObject boutonSaut;
+    public GameObject boutonSaut;
 
     bool ouvertureCoffre = false;
 
@@ -40,11 +40,9 @@ public class InteractableItemBase : MonoBehaviour
             canvas.SetActive(true);
             boutonOuv.SetActive(true);
             boutonSaut.SetActive(false);
-        } else
-        {
-            boutonOuv.SetActive(false); 
-            boutonSaut.SetActive(true);
-        }
+        } 
+           
+        
     }
 
     private void OnTriggerExit(Collider collision)
@@ -53,6 +51,8 @@ public class InteractableItemBase : MonoBehaviour
         {
             playerTouch = false;
             canvas.SetActive(false);
+            boutonSaut.SetActive(true);
+            boutonOuv.SetActive(false);
         }
     }
 
