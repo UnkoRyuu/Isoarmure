@@ -42,7 +42,7 @@ public class InteractableItemBase : MonoBehaviour
             boutonSaut.SetActive(false);
         } else
         {
-            boutonOuv.SetActive(false);
+            boutonOuv.SetActive(false); 
             boutonSaut.SetActive(true);
         }
     }
