@@ -2751,7 +2751,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.25, y: 1e-45, z: 0, w: 7.8e-44}
+  m_BoundingSphereOverride: {x: 9.39e-43, y: 2.5238488e-34, z: 4.5905e-41, w: 2.5236541e-34}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -7087,6 +7087,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: fantasy_chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119738668563558137, guid: 2dceea6749aacc14ca91d31e33f2ff56,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.7807226
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119738668563558137, guid: 2dceea6749aacc14ca91d31e33f2ff56,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 3.4998527
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119738668563558137, guid: 2dceea6749aacc14ca91d31e33f2ff56,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.04263509
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119738668563558137, guid: 2dceea6749aacc14ca91d31e33f2ff56,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.4283243
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119738668563558137, guid: 2dceea6749aacc14ca91d31e33f2ff56,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.2816839
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dceea6749aacc14ca91d31e33f2ff56, type: 3}
