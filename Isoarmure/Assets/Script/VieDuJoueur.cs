@@ -5,6 +5,7 @@ using UnityEngine;
 public class VieDuJoueur : MonoBehaviour
 {
     public int vie;
+    public Animator anim;
     //VieDuJoueur vieDuJoueur;
     // Start is called before the first frame update
     void Start()
@@ -22,5 +23,13 @@ public class VieDuJoueur : MonoBehaviour
     {
         vie = vie - degat;
         Debug.Log("vie : " + vie);
+    }
+
+    public void mort()
+    {
+        if(vie <= 0)
+        {
+            anim.Play("death");
+        }
     }
 }
