@@ -16,7 +16,11 @@ public class VieDuJoueur : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (vie <= 0)
+        {
+
+            anim.SetBool("die", true);
+        }
     }
 
     public void recevoirDesDegats(int degat)
@@ -25,11 +29,12 @@ public class VieDuJoueur : MonoBehaviour
         Debug.Log("vie : " + vie);
     }
 
-    public void mort()
+    /*public void mort()
     {
         if(vie <= 0)
         {
-            anim.Play("death");
+            
+            anim.SetBool("die",true);
         }
-    }
+    }*/
 }
