@@ -26,7 +26,7 @@ public class InteractableItemBase : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
@@ -35,7 +35,7 @@ public class InteractableItemBase : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
