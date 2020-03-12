@@ -13,6 +13,12 @@ public class InteractableItemBase : MonoBehaviour
 
     private GameObject canvas;
 
+    private GameObject boutonOuv;
+
+    private GameObject boutonSaut;
+
+    bool ouvertureCoffre = false;
+
 
     private void Start()
     {
@@ -32,6 +38,12 @@ public class InteractableItemBase : MonoBehaviour
         {
             playerTouch = true;
             canvas.SetActive(true);
+            boutonOuv.SetActive(true);
+            boutonSaut.SetActive(false);
+        } else
+        {
+            boutonOuv.SetActive(false);
+            boutonSaut.SetActive(true);
         }
     }
 
@@ -49,6 +61,17 @@ public class InteractableItemBase : MonoBehaviour
         if (playerTouch == true && Input.GetKeyDown(KeyCode.F))
         {
             OnInteract();
+        } else if (playerTouch == true && ouvertureCoffre == true)
+        {
+            OnInteract();
         }
+
+
     }
+
+    public void pressBoutonCoffre()
+    {
+        ouvertureCoffre = true;
+    }
+
 }
