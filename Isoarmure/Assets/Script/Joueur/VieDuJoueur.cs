@@ -28,7 +28,7 @@ public class VieDuJoueur : MonoBehaviour
 
    public void mort()
     {
-        if(vie <= 0)
+        if(vie == 0)
         {            
             anim.SetBool("die",true);
             gameOver.SetActive(true);

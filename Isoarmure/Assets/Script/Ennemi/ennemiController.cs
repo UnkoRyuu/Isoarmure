@@ -8,6 +8,7 @@ public class ennemiController : MonoBehaviour
 {
     public float lookRadius = 10f;
     public BarreDeVieDragon vie_Dragon;
+    public Animator animDragon;
     public int vieMax = 100;
     public int vieCourrante;
     bool animationLance = false;
@@ -20,15 +21,16 @@ public class ennemiController : MonoBehaviour
     {
         vieCourrante = vieMax;
         vie_Dragon.setVieMax(vieMax);
-        target = PlayerManager.instance.player.transform;
+        //target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
     }
     
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3(transform.position, target.position);
-        
+        mort();
+        //float distance = Vector3(transform.position, target.position);
+
     }
     public bool getAnimationLance()
     {
@@ -43,6 +45,17 @@ public class ennemiController : MonoBehaviour
     {
         vieCourrante -= degat;
         vie_Dragon.SetVie(vieCourrante);
+    }
+
+    public void mort()
+    {
+        Debug.Log("coucou");
+      if (vieCourrante == 0)
+      {
+        animDragon.SetBool("die", true);
+
+            }
+        
     }
     
     private void OnDrawGizmos()

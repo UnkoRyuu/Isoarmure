@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class detectionCollisionJoueur : MonoBehaviour
 {
-    public ennemiController ennemi;   
+    public ennemiController ennemi;
+    PlayerCC joueur;
     float tempsAttaque = 2f;
     float cooldown ;
     
@@ -12,6 +13,7 @@ public class detectionCollisionJoueur : MonoBehaviour
     private void Awake()
     {
         vieDuJoueur = GetComponent<StatJoueur>();
+        joueur = GetComponent<PlayerCC>();
     }
 
     private void Start()
@@ -24,10 +26,17 @@ public class detectionCollisionJoueur : MonoBehaviour
         {
             if (collision.collider.gameObject.layer == LayerMask.NameToLayer("HitPlayer") && Time.time > cooldown)
             {
-                cooldown = Time.time + tempsAttaque;
-                vieDuJoueur.EnvoyerDegat(1);
-                Debug.Log("Hit Tail");
-               
+                if (!joueur.getAnimationDefense())
+                {
+
+                    cooldown = Time.time + tempsAttaque;
+                    vieDuJoueur.EnvoyerDegat(1);
+                    Debug.Log("Hit Tail");
+                }
+                else
+                {
+                    Debug.Log("Parer ! ");
+                }
             }
         }
         else

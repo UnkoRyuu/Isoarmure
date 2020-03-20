@@ -6,7 +6,7 @@ public class detectionCollisionDragon : MonoBehaviour
 {
     public PlayerCC player;
     ennemiController ennemi;
-    float tempsAttaque = 2f;
+    float tempsAttaque = 1f;
     float cooldown;
     // Start is called before the first frame update
 
@@ -26,7 +26,7 @@ public class detectionCollisionDragon : MonoBehaviour
             if (collision.collider.gameObject.layer == LayerMask.NameToLayer("HitSword") && Time.time > cooldown)
             {
                 cooldown = Time.time + tempsAttaque;
-                ennemi.RecevoirDegat(20);
+                ennemi.RecevoirDegat(10);
                 Debug.Log("Hit Sword ! ");
 
             }

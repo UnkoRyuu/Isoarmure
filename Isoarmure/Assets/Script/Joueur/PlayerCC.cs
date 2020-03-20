@@ -9,21 +9,22 @@ public class PlayerCC : MonoBehaviour
     public Animator anim;
     public Animator animEnnemi;
 
-   // VieDuJoueur vieDuJoueur;
+    // VieDuJoueur vieDuJoueur;
 
     protected bl_Joystick joystick;
 
     public float speed;
     public float jumpSpeed;
     public float gravity = 20f;
-    public bool isAttacking = false;
+    //public bool isAttacking = false;
     public bool animationSwordLance = false;
+    public bool animationDefense = false;
     public Transform cam;
     private Vector3 moveDirection = Vector3.zero;
 
 
-    Transform from;
-    Transform to;
+    //Transform from;
+    //Transform to;
     float rotationSpeed = 0.1f;
 
 
@@ -32,7 +33,7 @@ public class PlayerCC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // vieDuJoueur = GetComponent<VieDuJoueur>();
+        // vieDuJoueur = GetComponent<VieDuJoueur>();
         Cc = GetComponent<CharacterController>();
         joystick = FindObjectOfType<bl_Joystick>();
     }
@@ -64,26 +65,26 @@ public class PlayerCC : MonoBehaviour
 
         }
         //Attack
-        
-        if (moveDirection.x > moveDirection.z)
-        {
-            anim.SetFloat("speed", moveDirection.x);
-        }
-        else
-        {
-            anim.SetFloat("speed", moveDirection.z);
-        }
 
-        if (moveDirection.x > moveDirection.z)
-        {
-            animEnnemi.SetFloat("speed", moveDirection.x);
-        }
-        else
-        {
-            animEnnemi.SetFloat("speed", moveDirection.z);
-        }
-        Debug.Log("MoveDirection : " + moveDirection);
+        /* if (moveDirection.x > moveDirection.z)
+         {
+             anim.SetFloat("speed", moveDirection.x);
+         }
+         else
+         {
+             anim.SetFloat("speed", moveDirection.z);
+         }
 
+         if (moveDirection.x > moveDirection.z)
+         {
+             animEnnemi.SetFloat("speed", moveDirection.x);
+         }
+         else
+         {
+             animEnnemi.SetFloat("speed", moveDirection.z);
+         }
+         Debug.Log("MoveDirection : " + moveDirection);
+         */
         //Debug.Log("moveDirectionPosition Y : " + moveDirection.y);
 
         //Mouvement
@@ -95,8 +96,7 @@ public class PlayerCC : MonoBehaviour
         //Application du mouvement
         Cc.Move(moveDirection * Time.deltaTime);
 
-
-        if(inputVector.magnitude > 0.1f)
+        if (inputVector.magnitude > 0.1f)
         {
             Vector3 rotTarget = new Vector3(moveDirection.x, 0, moveDirection.z);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z)), 0.1f);
@@ -113,6 +113,11 @@ public class PlayerCC : MonoBehaviour
         anim.Play("Attack");
     }
 
+    public void Defense()
+    {
+        anim.Play("parade");
+    }
+
     public void Jump()
     {
         if (Cc.isGrounded)
@@ -126,6 +131,8 @@ public class PlayerCC : MonoBehaviour
         }
     }
 
+
+    // get - set utile pour donner des dégats au dragon
     public bool getAnimationSwordLance()
     {
         return animationSwordLance;
@@ -135,22 +142,49 @@ public class PlayerCC : MonoBehaviour
         animationSwordLance = valueAnim;
     }
 
-
+    // condition de dégat donné au dragon
     public void isSwordAttacking(int value)
     {
         if (value == 1)
         {
             setAnimationSwordLance(true);
-            Debug.Log("testPositif");
+            Debug.Log("attaque = true");
 
         }
         else
         {
             setAnimationSwordLance(false);
-            Debug.Log("testnegatif");
+            Debug.Log("attaque = false");
 
         }
 
     }
 
+    // get - set utile pour contrer les dégats du dragon
+    public bool getAnimationDefense()
+    {
+        return animationDefense;
+    }
+    public void setAnimationDefense(bool valueAnim)
+    {
+        animationDefense = valueAnim;
+    }
+
+    // condition pour contrer les dégats du dragon
+    public void EnDefense(int value)
+    {
+        if (value == 1)
+        {
+            setAnimationDefense(true);
+            Debug.Log("Defense = true");
+
+        }
+        else
+        {
+            setAnimationDefense(false);
+            Debug.Log("Defense = false");
+
+        }
+
+    }
 }
