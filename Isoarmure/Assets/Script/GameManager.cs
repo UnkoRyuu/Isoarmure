@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadSceneAsync("scene du jeu");
     }
 
+
     public void menuOption()
     {
         menu.SetActive(false);
