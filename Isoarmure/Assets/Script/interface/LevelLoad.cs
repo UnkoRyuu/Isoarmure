@@ -11,12 +11,12 @@ public class LevelLoad : MonoBehaviour
     public GameObject Panel_Chargement;
     public Slider Barre_Chargement;
 
-    public void LoadLevel(string sceneIndex)
+    public void LoadLevel(int sceneIndex)
     {
         StartCoroutine(LoadAsync(sceneIndex));
     }
 
-    IEnumerator LoadAsync(string sceneIndex)
+    IEnumerator LoadAsync(int sceneIndex)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
 
