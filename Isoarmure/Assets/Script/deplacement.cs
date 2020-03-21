@@ -17,9 +17,11 @@ public class deplacement : MonoBehaviour
     void Update()
     {
         var rigibody = GetComponent<Rigidbody>();
-        rigibody.velocity = new Vector3(Input.GetAxis("Horizontal") * 10f , rigibody.velocity.y, Input.GetAxis("Vertical") * 10f);
+        rigibody.velocity = new Vector3(joystick.Horizontal * 2f , rigibody.velocity.y, joystick.Vertical * 2f);
+        Debug.Log(joystick.Horizontal);
         /*
         anim.SetFloat("vertical", Input.GetAxis("Vertical") * 10f);
         anim.SetFloat("horizontal", Input.GetAxis("Horizontal") * 10f);
-    */}
+    */
+    }
 }

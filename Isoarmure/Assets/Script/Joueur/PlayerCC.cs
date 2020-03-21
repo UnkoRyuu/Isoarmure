@@ -101,7 +101,7 @@ public class PlayerCC : MonoBehaviour
             Vector3 rotTarget = new Vector3(moveDirection.x, 0, moveDirection.z);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z)), 0.1f);
         }
-
+        Debug.Log("Horizontal : "+joystick.Horizontal +"Vertical : "+joystick.Vertical);
 
         //Debug.Log(Cc.isGrounded);
         Debug.Log(Cc.isGrounded);

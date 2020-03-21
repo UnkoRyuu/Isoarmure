@@ -49,7 +49,6 @@ public class ennemiController : MonoBehaviour
 
     public void mort()
     {
-        Debug.Log("coucou");
       if (vieCourrante == 0)
       {
         animDragon.SetBool("die", true);
