@@ -72,9 +72,12 @@ public class PlayerCC : MonoBehaviour
                 anim.SetFloat("speedx", moveDirection.x);
                 //Debug.Log("forward : " + moveDirection.x);
             }
-            if (moveDirection.x > 0.5)
+            if (detectionEnnemi.distance <= detectionEnnemi.viewRadius)
             {
-                detectionEnnemi.silent = detectionEnnemi.silent + 1;
+                if (moveDirection.x > 0.5)
+                {
+                    detectionEnnemi.silent = detectionEnnemi.silent + 1;
+                }
             }
 
             if (moveDirection.z != 0)
@@ -82,9 +85,12 @@ public class PlayerCC : MonoBehaviour
                 anim.SetFloat("speedz", moveDirection.z);
                 //Debug.Log("forward : " + moveDirection.z);
             }
-            if(moveDirection.z > 0.5)
+            if (detectionEnnemi.distance <= detectionEnnemi.viewRadius)
             {
-                detectionEnnemi.silent = detectionEnnemi.silent + 1;
+                if (moveDirection.z > 0.5)
+                {
+                    detectionEnnemi.silent = detectionEnnemi.silent + 1;
+                }
             }
         }
 
