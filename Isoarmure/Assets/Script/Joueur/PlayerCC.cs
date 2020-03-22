@@ -8,7 +8,7 @@ public class PlayerCC : MonoBehaviour
     public CharacterController controller;
     public Animator anim;
     public Animator animEnnemi;
-
+    public fieldOfview detectionEnnemi;
     // VieDuJoueur vieDuJoueur;
 
     protected bl_Joystick joystick;
@@ -70,47 +70,23 @@ public class PlayerCC : MonoBehaviour
             if (moveDirection.x != 0)
             {
                 anim.SetFloat("speedx", moveDirection.x);
-                Debug.Log("forward : " + moveDirection.x);
+                //Debug.Log("forward : " + moveDirection.x);
             }
-         
+            if (moveDirection.x > 0.5)
+            {
+                detectionEnnemi.silent = detectionEnnemi.silent + 1;
+            }
+
             if (moveDirection.z != 0)
             {
                 anim.SetFloat("speedz", moveDirection.z);
-                Debug.Log("forward : " + moveDirection.z);
-            }  
+                //Debug.Log("forward : " + moveDirection.z);
+            }
+            if(moveDirection.z > 0.5)
+            {
+                detectionEnnemi.silent = detectionEnnemi.silent + 1;
+            }
         }
-        //Attack
-        
-
-         /*if (moveDirection.x > moveDirection.z)
-         {
-             animEnnemi.SetFloat("speed", moveDirection.x);
-         }
-         else
-         {
-             animEnnemi.SetFloat("speed", moveDirection.z);
-         }*/
-         //Debug.Log("MoveDirection : " + moveDirection);
-        /* if (moveDirection.x > moveDirection.z)
-         {
-             anim.SetFloat("speed", moveDirection.x);
-         }
-         else
-         {
-             anim.SetFloat("speed", moveDirection.z);
-         }
-
-         if (moveDirection.x > moveDirection.z)
-         {
-             animEnnemi.SetFloat("speed", moveDirection.x);
-         }
-         else
-         {
-             animEnnemi.SetFloat("speed", moveDirection.z);
-         }
-         Debug.Log("MoveDirection : " + moveDirection);
-         */
-        //Debug.Log("moveDirectionPosition Y : " + moveDirection.y);
 
         //Mouvement
         //Gravité
@@ -126,7 +102,7 @@ public class PlayerCC : MonoBehaviour
             Vector3 rotTarget = new Vector3(moveDirection.x, 0, moveDirection.z);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z)), 0.1f);
         }
-        //Debug.Log("Horizontal : "+joystick.Horizontal +"Vertical : "+joystick.Vertical);
+        
 
         //Debug.Log(Cc.isGrounded);
         Debug.Log(Cc.isGrounded);
@@ -138,6 +114,7 @@ public class PlayerCC : MonoBehaviour
         anim.Play("Attack");
     }
 
+    //Animation Defense
     public void Defense()
     {
         anim.Play("parade");

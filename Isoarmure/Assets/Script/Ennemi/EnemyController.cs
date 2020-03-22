@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    /*public float speed = 20f;
+    public float speed = 20f;
     public Transform FollowPos = null;
     public Animator animDragon;
 
@@ -17,5 +17,5 @@ public class EnemyController : MonoBehaviour
             animDragon.Play("walk");
         }
         
-    }*/
+    }
 }

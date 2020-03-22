@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
+
 
 
 public class fieldOfview : MonoBehaviour
@@ -12,9 +14,9 @@ public class fieldOfview : MonoBehaviour
     public float silent = 0f;
     public float viewRadius;
     float positionX_Player = 0, positionZ_Player = 0, positionX_dragon = 0, positionZ_dragon = 0;
-    //public float viewAngle;
     GameObject player; 
-    GameObject dragon ;
+    GameObject dragon;
+    public NavMeshAgent agent;
 
     public Vector3 DirFromAngle(float anglesinDegrees)
     {
@@ -30,6 +32,7 @@ public class fieldOfview : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         dragon = GameObject.FindGameObjectWithTag("Dragon");
+
     }
     public void Update()
     {
@@ -54,8 +57,18 @@ public class fieldOfview : MonoBehaviour
         {
             danger.gameObject.SetActive(true);
             anim.SetBool("inZone", true);
+            anim.SetFloat("vertical", silent);
+
             anim.SetFloat("randomAttack", Random.Range(0.00001f, 3));
             //anim.SetFloat("randomAttack", -1f);
+
+           if(silent > 3)
+            {
+                agent.SetDestination(player.transform.position);
+                faceTarget();
+            }
+                
+           
         }
         else
         {
@@ -65,6 +78,11 @@ public class fieldOfview : MonoBehaviour
             //anim.SetFloat("randomAttack", -1f);
         }
     }
-        
+       void faceTarget()
+    {
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime);
+    } 
    
 }

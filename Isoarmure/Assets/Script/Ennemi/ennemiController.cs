@@ -13,6 +13,7 @@ public class ennemiController : MonoBehaviour
     public int vieCourrante;
     bool animationLance = false;
 
+
     Transform target;
     NavMeshAgent agent;
     

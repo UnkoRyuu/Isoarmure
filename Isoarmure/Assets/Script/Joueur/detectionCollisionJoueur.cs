@@ -5,6 +5,7 @@ using UnityEngine;
 public class detectionCollisionJoueur : MonoBehaviour
 {
     public ennemiController ennemi;
+    Animator anim; 
     PlayerCC joueur;
     float tempsAttaque = 2f;
     float cooldown ;
@@ -18,8 +19,10 @@ public class detectionCollisionJoueur : MonoBehaviour
 
     private void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
+
+
     public void OnControllerColliderHit(ControllerColliderHit collision)
     {
         if (ennemi.getAnimationLance())
@@ -31,6 +34,7 @@ public class detectionCollisionJoueur : MonoBehaviour
 
                     cooldown = Time.time + tempsAttaque;
                     vieDuJoueur.EnvoyerDegat(1);
+                    anim.SetBool("toucher", true);
                     Debug.Log("Hit Tail");
                 }
                 else
@@ -46,5 +50,9 @@ public class detectionCollisionJoueur : MonoBehaviour
         }
     }
 
+    public void stopAnimToucher(int value)
+    {
+        anim.SetBool("toucher",false);
+    }
     
 }
