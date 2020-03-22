@@ -46,14 +46,15 @@ public class PlayerCC : MonoBehaviour
         float inputY = joystick.Vertical * 0.125f + Input.GetAxis("Vertical") * 0.5f;
         Vector3 inputVector = new Vector3(inputX, inputY, 0);
 
-        //Animation Déplacement
+        
         if (Cc.isGrounded)
         {
             Vector3 forwardTarget = new Vector3(cam.forward.x, 0, cam.forward.z);
             Vector3 forwardDirection = forwardTarget;
+            
             forwardDirection = forwardDirection.normalized;
             //Debug.DrawLine(cam.position, cam.position + forwardDirection, Color.magenta);
-
+            
             Vector3 rightTarget = new Vector3(cam.right.x, 0, cam.right.z);
             Vector3 rightDirection = rightTarget;
             rightDirection = rightDirection.normalized;
@@ -63,9 +64,33 @@ public class PlayerCC : MonoBehaviour
 
             moveDirection = new Vector3(move.x * speed, moveDirection.y, move.z * speed);
 
+
+
+            //Animation Déplacement
+            if (moveDirection.x != 0)
+            {
+                anim.SetFloat("speedx", moveDirection.x);
+                Debug.Log("forward : " + moveDirection.x);
+            }
+         
+            if (moveDirection.z != 0)
+            {
+                anim.SetFloat("speedz", moveDirection.z);
+                Debug.Log("forward : " + moveDirection.z);
+            }  
         }
         //Attack
+        
 
+         /*if (moveDirection.x > moveDirection.z)
+         {
+             animEnnemi.SetFloat("speed", moveDirection.x);
+         }
+         else
+         {
+             animEnnemi.SetFloat("speed", moveDirection.z);
+         }*/
+         //Debug.Log("MoveDirection : " + moveDirection);
         /* if (moveDirection.x > moveDirection.z)
          {
              anim.SetFloat("speed", moveDirection.x);
@@ -101,7 +126,7 @@ public class PlayerCC : MonoBehaviour
             Vector3 rotTarget = new Vector3(moveDirection.x, 0, moveDirection.z);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z)), 0.1f);
         }
-        Debug.Log("Horizontal : "+joystick.Horizontal +"Vertical : "+joystick.Vertical);
+        //Debug.Log("Horizontal : "+joystick.Horizontal +"Vertical : "+joystick.Vertical);
 
         //Debug.Log(Cc.isGrounded);
         Debug.Log(Cc.isGrounded);
