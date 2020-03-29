@@ -41,7 +41,7 @@ public class PlayerCC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         float inputX = joystick.Horizontal * 0.125f + Input.GetAxis("Horizontal") * 0.5f;
         float inputY = joystick.Vertical * 0.125f + Input.GetAxis("Vertical") * 0.5f;
         Vector3 inputVector = new Vector3(inputX, inputY, 0);
@@ -74,7 +74,7 @@ public class PlayerCC : MonoBehaviour
             }
             if (detectionEnnemi.distance <= detectionEnnemi.viewRadius)
             {
-                if (moveDirection.x > 0.5)
+                if (moveDirection.x > 0.5 || moveDirection.x < -0.5)
                 {
                     detectionEnnemi.silent = detectionEnnemi.silent + 1;
                 }
@@ -87,7 +87,7 @@ public class PlayerCC : MonoBehaviour
             }
             if (detectionEnnemi.distance <= detectionEnnemi.viewRadius)
             {
-                if (moveDirection.z > 0.5)
+                if (moveDirection.z > 0.5 || moveDirection.z < -0.5)
                 {
                     detectionEnnemi.silent = detectionEnnemi.silent + 1;
                 }

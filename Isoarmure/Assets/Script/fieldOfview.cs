@@ -14,6 +14,8 @@ public class fieldOfview : MonoBehaviour
     public float silent = 0f;
     public float distance;
     public float viewRadius;
+    bool estDetecte = false;
+    ennemiController ennemiController;
     float positionX_Player = 0, positionZ_Player = 0, positionX_dragon = 0, positionZ_dragon = 0;
     GameObject player; 
     GameObject dragon;
@@ -27,10 +29,12 @@ public class fieldOfview : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        ennemiController = GetComponent<ennemiController>();
     }
 
     private void Start()
     {
+        
         player = GameObject.FindGameObjectWithTag("Player");
         dragon = GameObject.FindGameObjectWithTag("Dragon");
 
@@ -58,17 +62,22 @@ public class fieldOfview : MonoBehaviour
         {
             danger.gameObject.SetActive(true);
             anim.SetBool("inZone", true);
-            anim.SetFloat("vertical", silent);
+            anim.SetFloat("silent", silent);
 
             anim.SetFloat("randomAttack", Random.Range(0.00001f, 3));
             //anim.SetFloat("randomAttack", -1f);
 
-           if(silent > 3)
+
+            if (silent > 3 && ennemiController.vieCourrante > 0)
             {
                 agent.SetDestination(player.transform.position);
                 faceTarget();
+                setPlayerDetecte(true);
             }
-                
+            else
+            {
+                setPlayerDetecte(false);
+            }
            
         }
         else
@@ -79,11 +88,21 @@ public class fieldOfview : MonoBehaviour
             //anim.SetFloat("randomAttack", -1f);
         }
     }
-       void faceTarget()
+
+    public void setPlayerDetecte(bool pEstDetecte)
+    {
+        estDetecte = pEstDetecte;
+    }
+
+    public bool getPlayerDetecte()
+    {
+        return estDetecte;
+    }
+
+    private void faceTarget()
     {
         Vector3 direction = (player.transform.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime);
-    } 
-   
+    }
 }

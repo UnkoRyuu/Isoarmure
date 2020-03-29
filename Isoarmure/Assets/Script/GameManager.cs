@@ -8,8 +8,13 @@ public class GameManager : MonoBehaviour
     public GameObject menu;
     public GameObject option;
     public GameObject credit;
+    public AudioSource audioMenu;
 
-    
+    private void Start()
+    {
+        audioMenu.Play();
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadSceneAsync("scene du jeu");

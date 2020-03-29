@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Dragon
   - dragon
+  - message_target
   layers:
   - Default
   - TransparentFX

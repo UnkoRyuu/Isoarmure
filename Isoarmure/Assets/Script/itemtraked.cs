@@ -5,7 +5,7 @@ using UnityEngine;
 public class itemtraked : MonoBehaviour
 {
     public void onTrackingFound() {
-        Debug.Log("found");
+        Debug.Log("found");       
         GetComponent<Rigidbody>().isKinematic = false;
     }
 

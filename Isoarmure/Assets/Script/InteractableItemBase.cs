@@ -17,6 +17,8 @@ public class InteractableItemBase : MonoBehaviour
 
     public GameObject boutonSaut;
 
+    public fieldOfview playerDetecte;
+
     bool ouvertureCoffre = false;
 
 
@@ -34,7 +36,7 @@ public class InteractableItemBase : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag.Equals("Player"))
+        if (collision.gameObject.tag.Equals("Player") && playerDetecte.getPlayerDetecte() == false )
         {
             playerTouch = true;
             canvas.SetActive(true);
@@ -47,7 +49,7 @@ public class InteractableItemBase : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.tag.Equals("Player"))
+        if (collision.gameObject.tag.Equals("Player") && playerDetecte.getPlayerDetecte() == false)
         {
             playerTouch = false;
             canvas.SetActive(false);
@@ -61,10 +63,10 @@ public class InteractableItemBase : MonoBehaviour
         if (playerTouch == true && Input.GetKeyDown(KeyCode.F))
         {
             OnInteract();
-        } else if (playerTouch == true && ouvertureCoffre == true)
+        }/* else if (playerTouch == true && ouvertureCoffre == true)
         {
             OnInteract();
-        }
+        }*/
 
 
     }
@@ -73,5 +75,5 @@ public class InteractableItemBase : MonoBehaviour
     {
         ouvertureCoffre = true;
     }
-
+    
 }
