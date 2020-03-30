@@ -70,7 +70,19 @@ public class fieldOfview : MonoBehaviour
 
             if (silent > 3 && ennemiController.vieCourrante > 0)
             {
+                //deplacement de l'IA
                 agent.SetDestination(player.transform.position);
+                //animation si déplacement de l'IA
+                
+                if(distance >0.5)
+                {
+                    anim.SetBool("run", true);
+                }
+                else
+                {
+                    anim.SetBool("run", false);
+                }
+
                 faceTarget();
                 setPlayerDetecte(true);
             }
