@@ -45,8 +45,15 @@ public class detectionCollisionJoueur : MonoBehaviour
         }
         else
         {
-            
+           
             //Debug.Log("PAS DE COLLISION PENDANT ANIM");
+        }
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("FireBall") && Time.time > cooldown)
+        {
+            cooldown = Time.time + tempsAttaque-1;
+            vieDuJoueur.EnvoyerDegat(1);
+            anim.SetBool("toucher", true);
+            Debug.Log("Hit Ball");          
         }
     }
 

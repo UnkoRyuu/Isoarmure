@@ -6,7 +6,7 @@ public class detectionCollisionDragon : MonoBehaviour
 {
     public PlayerCC player;
     ennemiController ennemi;
-    float tempsAttaque = 1f;
+    float tempsAttaque = 0.75f;
     float cooldown;
     // Start is called before the first frame update
 

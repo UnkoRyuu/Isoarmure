@@ -14,6 +14,7 @@ public class fieldOfview : MonoBehaviour
     public float silent = 0f;
     public float distance;
     public float viewRadius;
+    public float dureeCourseDragon; 
     bool estDetecte = false;
     ennemiController ennemiController;
     float positionX_Player = 0, positionZ_Player = 0, positionX_dragon = 0, positionZ_dragon = 0;
@@ -64,26 +65,62 @@ public class fieldOfview : MonoBehaviour
             anim.SetBool("inZone", true);
             anim.SetFloat("silent", silent);
 
-            anim.SetFloat("randomAttack", Random.Range(0.00001f, 3));
+            
             //anim.SetFloat("randomAttack", -1f);
 
 
             if (silent > 3 && ennemiController.vieCourrante > 0)
             {
-                //deplacement de l'IA
-                agent.SetDestination(player.transform.position);
+                viewRadius = 3;
+                //rotation vers le perso de l'IA
+                faceTarget();
                 //animation si déplacement de l'IA
-                
-                if(distance >0.5)
+
+                if (distance >0.5)
                 {
-                    anim.SetBool("run", true);
+                    anim.SetFloat("randomAttack",0);
+                    dureeCourseDragon += Time.deltaTime;
+                    if (dureeCourseDragon > 3f)
+                    {
+                        anim.SetBool("run", false);
+                        anim.SetBool("vol", true);
+                        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Fly Fireball Shoot"))
+                        {
+
+                        }
+
+                        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Fly Forward"))
+                        {
+                            
+                            agent.SetDestination(player.transform.position);
+                        }
+                        else
+                        {
+                            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Land")) {
+                                dureeCourseDragon = 0;
+                                anim.SetBool("vol", false);
+                                
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //deplacement de l'IA
+                        anim.SetBool("vol", false);
+                        agent.SetDestination(player.transform.position);
+                        anim.SetBool("run", true);
+                    }
+                    
+                    
                 }
                 else
                 {
+                    anim.SetFloat("randomAttack", Random.Range(0.00001f, 3));
+                    dureeCourseDragon = 0f;
                     anim.SetBool("run", false);
                 }
 
-                faceTarget();
+                
                 setPlayerDetecte(true);
             }
             else

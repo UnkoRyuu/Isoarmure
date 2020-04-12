@@ -111,7 +111,6 @@ public class PlayerCC : MonoBehaviour
         
 
         //Debug.Log(Cc.isGrounded);
-        Debug.Log(Cc.isGrounded);
     }
 
     //Animation Attack
