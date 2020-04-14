@@ -42,6 +42,26 @@ public class detectionCollisionJoueur : MonoBehaviour
                     Debug.Log("Parer ! ");
                 }
             }
+
+            if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Morsure") && Time.time > cooldown)
+            {
+                if (!joueur.getAnimationDefense())
+                {
+
+                    cooldown = Time.time + tempsAttaque;
+                    vieDuJoueur.EnvoyerDegat(1);
+                    anim.SetBool("toucher", true);
+                    Debug.Log("Hit Morsure");
+                }
+                else
+                {
+                    Debug.Log("Parer  la morsure ! ");
+                }
+            }
+            else
+            {
+                Debug.Log("pas de collision avec la tete");
+            }
         }
         else
         {

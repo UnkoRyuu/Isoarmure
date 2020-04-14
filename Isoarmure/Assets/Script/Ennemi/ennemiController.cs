@@ -89,6 +89,30 @@ public class ennemiController : MonoBehaviour
         
     }
 
+    public void isMorsureAttack(int value)
+    {
+        if (value == 1)
+        {
+            setAnimationLance(true);
+            //Debug.Log("testPositif");
+
+        }
+        else
+        {
+            setAnimationLance(false);
+            //Debug.Log("testnegatif");
+
+        }
+    }
+
+    public void finDuCri(int value)
+    {
+        if (value == 1)
+        {
+            animDragon.SetBool("apresCri", true);
+            //Debug.Log("condition passé");
+        }
+    }
 
     public void lanceBouleDeFeu(int value)
     {
