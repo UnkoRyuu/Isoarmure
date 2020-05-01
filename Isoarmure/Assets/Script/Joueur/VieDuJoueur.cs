@@ -6,7 +6,9 @@ public class VieDuJoueur : MonoBehaviour
 {
     public int vie;
     public Animator anim;
-    public GameObject gameOver;
+    public GameObject panel_fin_du_jeu;
+    public GameObject defaite;
+    public AudioSource sonAnimation;
     //VieDuJoueur vieDuJoueur;
     // Start is called before the first frame update
     void Start()
@@ -31,7 +33,10 @@ public class VieDuJoueur : MonoBehaviour
         if(vie == 0)
         {            
             anim.SetBool("die",true);
-            gameOver.SetActive(true);
+            panel_fin_du_jeu.SetActive(true);
+            defaite.SetActive(true);
+
+            sonAnimation.PlayOneShot();
             
         }
     }
